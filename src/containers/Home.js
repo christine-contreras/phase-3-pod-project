@@ -39,8 +39,12 @@ export class Home extends Component {
             return (
               <Card
                 key={joke.date}
+                location={this.props.location}
                 joke={joke}
-                handleSaveJoke={this.props.handleSaveJoke}
+                handleJoke={this.props.handleJoke}
+                jokeIsSaved={this.props.savedJokes.find(
+                  (savedJoke) => savedJoke["_id"] === joke["_id"]
+                )}
               />
             );
           })}

@@ -1,25 +1,10 @@
 {
   "jokes": [
     {
-      "_id": "60dd35f2b9a38fde77d0031f",
-      "setup": "What’s 30 metres long and has no hair?",
-      "punchline": "A conga line at a cancer clinic",
-      "type": "conga",
-      "likes": [],
-      "author": {
-        "name": "unknown",
-        "id": null
-      },
-      "approved": true,
-      "date": 1618108661,
-      "NSFW": false,
-      "id": 1
-    },
-    {
-      "_id": "60dd35a6ebc36138dd391e67",
-      "setup": "I went to the liquor store today",
-      "punchline": "and I bought a bunch of bottles of wine. I’m getting ready to pay, and the cashier asked “you wanna box for those?” I looked at him and said “nah, I hate violence. Is it cool if I just pay with my card?”",
-      "type": "bottle",
+      "_id": "60dd3602009ef7b4de23ab28",
+      "setup": "I watched a film about a giant crocodile with erectile dysfunction....",
+      "punchline": "Lake Flaccid.",
+      "type": "crocodile",
       "likes": [],
       "author": {
         "name": "unknown",
@@ -31,10 +16,10 @@
       "id": 2
     },
     {
-      "_id": "60dd3602009ef7b4de23ab28",
-      "setup": "I watched a film about a giant crocodile with erectile dysfunction....",
-      "punchline": "Lake Flaccid.",
-      "type": "crocodile",
+      "_id": "60dd35a6ebc36138dd391e67",
+      "setup": "I went to the liquor store today",
+      "punchline": "and I bought a bunch of bottles of wine. I’m getting ready to pay, and the cashier asked “you wanna box for those?” I looked at him and said “nah, I hate violence. Is it cool if I just pay with my card?”",
+      "type": "bottle",
       "likes": [],
       "author": {
         "name": "unknown",

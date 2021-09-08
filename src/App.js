@@ -10,13 +10,17 @@ export class App extends Component {
     savedJokes: [],
   };
 
-  componentDidMount() {
+  fetchJsonServer = () => {
     fetch("http://localhost:3000/jokes")
       .then((response) => response.json())
       .then((savedJokes) => this.setState({ savedJokes }));
+  };
+
+  componentDidMount() {
+    this.fetchJsonServer();
   }
 
-  handleSaveJoke = (joke) => {
+  handleSaveJoke = async (joke) => {
     if (this.state.savedJokes.find((saved) => saved["_id"] == joke["_id"]))
       return;
 
@@ -29,12 +33,21 @@ export class App extends Component {
       body: JSON.stringify(joke),
     };
 
-    fetch(`http://localhost:3000/jokes`, configureData);
+    await fetch(`http://localhost:3000/jokes`, configureData);
+    await this.fetchJsonServer();
+  };
 
-    this.setState((prevState) => {
-      return {
-        savedJokes: [...prevState.savedJokes, joke],
-      };
+  handleRemoveJoke = (joke) => {
+    fetch(`http://localhost:3000/jokes/${joke.id}`, {
+      method: "DELETE",
+    });
+
+    const filteredJokes = this.state.savedJokes.filter(
+      (saved) => saved["_id"] !== joke["_id"]
+    );
+
+    this.setState({
+      savedJokes: filteredJokes,
     });
   };
 
@@ -51,13 +64,27 @@ export class App extends Component {
               render={(routerProps) => (
                 <Home
                   {...routerProps}
-                  handleSaveJoke={this.handleSaveJoke}
+                  handleJoke={this.handleSaveJoke}
                   savedJokes={this.state.savedJokes}
                 />
               )}
             />
-            <Route exact path="/saved" component={SavedJokes} />
-            <Route exact path="/create" component={CreateJoke} />
+            <Route
+              exact
+              path="/saved"
+              render={(routerProps) => (
+                <SavedJokes
+                  {...routerProps}
+                  savedJokes={this.state.savedJokes}
+                  handleJoke={this.handleRemoveJoke}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/create"
+              render={(routerProps) => <CreateJoke {...routerProps} />}
+            />
           </div>
         </>
       </Router>

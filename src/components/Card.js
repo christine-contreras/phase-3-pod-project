@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card = ({ joke, handleSaveJoke }) => {
+const Card = ({ joke, handleJoke, location }) => {
   return (
     <>
       <div className="col-xs-12 col-sm-6 col-md-3 card-container">
@@ -12,7 +12,19 @@ const Card = ({ joke, handleSaveJoke }) => {
               <div class="card-body">
                 <p class="font-weight-bold">{joke.setup}</p>
                 {/* button */}
-                <button onClick={() => handleSaveJoke(joke)}>Save Joke</button>
+                <button onClick={() => handleJoke(joke)}>
+                  {location.pathname === "/" ? "Save Joke" : "Delete Joke"}
+                </button>
+
+                {/* {jokeIsSaved ? (
+                  <button onClick={() => handleRemoveJoke(joke)}>
+                    Delete Joke
+                  </button>
+                ) : (
+                  <button onClick={() => handleSaveJoke(joke)}>
+                    Save Joke
+                  </button>
+                )} */}
               </div>
             </div>
 
@@ -22,7 +34,18 @@ const Card = ({ joke, handleSaveJoke }) => {
                 <hr />
                 <p>{joke.punchline}</p>
                 <hr />
-                <button onClick={() => handleSaveJoke(joke)}>Save Joke</button>
+                <button onClick={() => handleJoke(joke)}>
+                  {location.pathname === "/" ? "Save Joke" : "Delete Joke"}
+                </button>
+                {/* {jokeIsSaved ? (
+                  <button onClick={() => handleRemoveJoke(joke)}>
+                    Delete Joke
+                  </button>
+                ) : (
+                  <button onClick={() => handleSaveJoke(joke)}>
+                    Save Joke
+                  </button>
+                )} */}
               </div>
             </div>
           </div>

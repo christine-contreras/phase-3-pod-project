@@ -14,7 +14,6 @@ export class CreateJoke extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log("Clicked");
   }
   render() {
     return (
