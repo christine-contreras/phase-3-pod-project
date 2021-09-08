@@ -36,7 +36,13 @@ export class Home extends Component {
 
         <div className="row">
           {this.state.jokes.map((joke) => {
-            return <Card key={joke.date} joke={joke} />;
+            return (
+              <Card
+                key={joke.date}
+                joke={joke}
+                handleSaveJoke={this.props.handleSaveJoke}
+              />
+            );
           })}
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card = ({ joke }) => {
+const Card = ({ joke, handleSaveJoke }) => {
   return (
     <>
       <div className="col-xs-12 col-sm-6 col-md-3 card-container">
@@ -12,9 +12,7 @@ const Card = ({ joke }) => {
               <div class="card-body">
                 <p class="font-weight-bold">{joke.setup}</p>
                 {/* button */}
-                <a class="rotate-btn" data-card="card-1">
-                  Save Joke
-                </a>
+                <button onClick={() => handleSaveJoke(joke)}>Save Joke</button>
               </div>
             </div>
 
@@ -24,9 +22,7 @@ const Card = ({ joke }) => {
                 <hr />
                 <p>{joke.punchline}</p>
                 <hr />
-                <a class="rotate-btn" data-card="card-1">
-                  Save Joke
-                </a>
+                <button onClick={() => handleSaveJoke(joke)}>Save Joke</button>
               </div>
             </div>
           </div>
