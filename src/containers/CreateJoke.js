@@ -6,25 +6,50 @@ export class CreateJoke extends Component {
     super();
     this.state = {
       joke: "",
-      punchLine: "",
+      punchline: "",
     };
   }
 
   handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
-  }
+    this.handleSaveJoke();
+  };
+
+  handleSaveJoke = () => {
+    debugger;
+    const configureData = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        _id: Math.floor(Math.random() * 1000000000),
+        punchline: this.state.punchline,
+        setup: this.state.joke,
+      }),
+    };
+
+    fetch(`http://localhost:3000/jokes`, configureData).then(() => {
+      this.setState({
+        joke: "",
+        punchline: "",
+      });
+      this.props.fetchJsonServer();
+    });
+  };
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <div class="form-group">
-          <label for="Joke">Enter Joke</label>
+          <label for="Joke">Enter Setup</label>
           <input
             type="text"
             class="form-control"
-            id="formGroupExampleInput"
-            placeholder="Enter Joke"
+            placeholder="Enter Joke Setup"
             name="joke"
             onChange={this.handleChange}
           ></input>
@@ -34,13 +59,13 @@ export class CreateJoke extends Component {
           <input
             type="text"
             class="form-control"
-            id="formGroupExampleInput2"
             placeholder="Enter Punchline"
+            name="punchline"
             onChange={this.handleChange}
           ></input>
         </div>
         <button type="submit" class="btn btn-primary">
-          Submit
+          Save Joke
         </button>
       </form>
     );

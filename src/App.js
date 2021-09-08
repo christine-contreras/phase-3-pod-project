@@ -83,7 +83,12 @@ export class App extends Component {
             <Route
               exact
               path="/create"
-              render={(routerProps) => <CreateJoke {...routerProps} />}
+              render={(routerProps) => (
+                <CreateJoke
+                  {...routerProps}
+                  fetchJsonServer={this.fetchJsonServer}
+                />
+              )}
             />
           </div>
         </>

@@ -9,24 +9,24 @@ export class Home extends Component {
   };
 
   componentDidMount() {
-    // fetch("https://dad-jokes.p.rapidapi.com/random/joke?count=1", {
-    //   method: "GET",
-    //   headers: {
-    //     "x-rapidapi-host": "dad-jokes.p.rapidapi.com",
-    //     "x-rapidapi-key": ${apiKey},
-    //   },
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     this.setState({
-    //       jokes: data.body,
-    //     });
-    //   });
+    fetch("https://dad-jokes.p.rapidapi.com/random/joke?count=4", {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "dad-jokes.p.rapidapi.com",
+        "x-rapidapi-key": apiKey,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          jokes: data.body,
+        });
+      });
 
-    this.setState({
-      jokes: data,
-    });
+    // this.setState({
+    //   jokes: data,
+    // });
   }
 
   render() {
